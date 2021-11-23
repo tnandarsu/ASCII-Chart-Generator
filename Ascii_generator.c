@@ -16,36 +16,78 @@ int main()
     }
 
 
-    int count [256] = {0};
+    int char_count [95];
     int c;
+
+    int i = 0, max = 0;
+
+    for(i = 0; i < 95; i++)
+    {
+      char_count[i]=0;
+    }
+
 
     while((c= fgetc(in)))
     {
         if(c == EOF)
             break;
         
-        count[c] += 1;
+        ++char_count[c - 32];   
         
     }
 
-
-    int k;
-    for(k=0; k<256; k++) 
+    for(i = 0; i < 95; i++)
     {
-        if(count[k] > 0) 
+        if(max < char_count[i])
         {
-            printf("char %c: %d times\n", k, count[k]);
+            max = char_count[i];
         }
     }
 
-    // to be continued
-    /*
-    out = fopen("output_text.txt", "w");
-    if(out == NULL)
-    {
-        printf("Cannot open destination file");
-        exit(1);
-    }
-    */
+    printf("\n");
 
+    for(i = max; i >= 0; --i)
+    {
+        for(c = 0; c < 95; c++)
+        {
+            if(char_count[c] != 0)
+            {
+                if(char_count[c]- i < 0)
+                {
+                    printf(" ");
+                }
+
+                else if(i == 0)
+                {
+                    printf("==");
+                }
+
+                else
+                {
+                    printf(" #");
+                }
+            }
+        }
+        printf("\n");
+    }
+
+
+    for(i = 0; i < 95; i++)
+    {
+        if(char_count[i] != 0)
+        {
+            if(i == 0)
+            {
+                printf("sp ");
+            }
+
+            else
+            {
+                printf("%c ", i+32);
+            }
+        }
+    
+    }printf("\n");
 }
+
+//to be continued
