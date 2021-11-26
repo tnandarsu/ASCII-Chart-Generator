@@ -1,32 +1,34 @@
 #include<stdio.h>
 #include<stdlib.h>
+#define file_size 100
+#define ctotal 95
 
 int main()
-{
-    FILE *in, *out;
-    char filename[100];
-    printf("Enter file name: ");
-    scanf("%s", filename);
+{   
 
-    in = fopen(filename, "r");
+    FILE *in;
+    char input_file[file_size];
+    printf("Enter input text file name: ");
+    scanf("%s", input_file);
+
+    in = fopen(input_file, "r");
     if(in == NULL)
     {
         printf("Cannot open input file!");
         exit(1);
     }
 
-
-    int char_count [95];
+    int char_count [ctotal];
     int c;
 
     int i = 0, max = 0;
 
-    for(i = 0; i < 95; i++)
+    for(i = 0; i < ctotal; i++)
     {
       char_count[i]=0;
     }
 
-
+    /*Frequency of each character*/
     while((c= fgetc(in)))
     {
         if(c == EOF)
@@ -36,7 +38,7 @@ int main()
         
     }
 
-    for(i = 0; i < 95; i++)
+    for(i = 0; i < ctotal; i++)
     {
         if(max < char_count[i])
         {
@@ -46,48 +48,56 @@ int main()
 
     printf("\n");
 
+    /*Printing the Vertical Histogram*/
     for(i = max; i >= 0; --i)
     {
-        for(c = 0; c < 95; c++)
+        for(c = 0; c < ctotal; c++)
         {
             if(char_count[c] != 0)
             {
                 if(char_count[c]- i < 0)
                 {
-                    printf(" ");
+                    printf("  ");
+                    
                 }
 
                 else if(i == 0)
                 {
                     printf("==");
+                   
                 }
 
                 else
                 {
                     printf(" #");
+                    
                 }
             }
         }
         printf("\n");
     }
 
-
-    for(i = 0; i < 95; i++)
+    /*Printing the Characters below the Histogram for reference*/
+    for(i = 0; i < ctotal; i++)
     {
         if(char_count[i] != 0)
         {
             if(i == 0)
             {
-                printf("sp ");
+                printf("sp "); // sp for space
+                
             }
 
             else
             {
                 printf("%c ", i+32);
+               
             }
         }
     
     }printf("\n");
-}
 
-//to be continued
+    fclose(in);
+    return 0;
+
+}
