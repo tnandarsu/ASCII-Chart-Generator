@@ -10,7 +10,8 @@ int main()
     char input_file[file_size];
     printf("Enter input text file name: ");
     scanf("%s", input_file);
-
+    
+    //check the input file
     in = fopen(input_file, "r");
     if(in == NULL)
     {
@@ -57,20 +58,17 @@ int main()
             {
                 if(char_count[c]- i < 0)
                 {
-                    printf("  ");
-                    
+                    printf("  ");       
                 }
 
                 else if(i == 0)
                 {
-                    printf("==");
-                   
+                    printf("==");                   
                 }
 
                 else
                 {
-                    printf(" #");
-                    
+                    printf(" #");            
                 }
             }
         }
@@ -84,14 +82,12 @@ int main()
         {
             if(i == 0)
             {
-                printf("sp "); // sp for space
-                
+                printf("sp "); // sp for space        
             }
 
             else
             {
-                printf("%c ", i+32);
-               
+                printf("%c ", i+32); 
             }
         }
     
