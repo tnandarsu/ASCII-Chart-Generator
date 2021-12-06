@@ -11,5 +11,5 @@ The frequency of characters in given text file will be shown in "#" vertical his
 stdio.h
 stdlib.h
 
-# BY
+# CREATED BY
 Theint Nandarsu 64011752
