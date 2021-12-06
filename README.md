@@ -1,5 +1,5 @@
 # PURPOSE 
-Individual project for KMITL first semester c programming course 
+Individual project for KMITL-Year 1-first semester(c programming course)
 
 # ASCII-Chart-Generator
 Building a program called "ASCII Chart Generator" with c programming language
